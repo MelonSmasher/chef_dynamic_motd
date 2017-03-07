@@ -1,0 +1,1 @@
+default['dynamic_motd']['message'] = ''
