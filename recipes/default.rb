@@ -22,9 +22,9 @@ if node['platform_family'] == 'debian' or 'redhat'
 
   package 'lsb' do
     if node['platform_family'] == 'redhat'
-      name 'redhat-lsb-core'
+      package_name 'redhat-lsb-core'
     elsif node['platform_family'] == 'debian'
-      name 'lsb-release'
+      package_name 'lsb-release'
     end
     action :install
   end
