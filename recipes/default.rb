@@ -16,17 +16,12 @@ end
 
 if node['platform_family'] == 'debian' or 'redhat'
 
-  package 'figlet' do
-    action :install
-  end
+  package 'figlet'
 
-  package 'lsb' do
-    if node['platform_family'] == 'redhat'
-      package_name 'redhat-lsb-core'
-    elsif node['platform_family'] == 'debian'
-      package_name 'lsb-release'
-    end
-    action :install
+  if node['platform_family'] == 'rhel'
+    package 'redhat-lsb-core'
+  elsif node['platform_family'] == 'debian'
+    package 'lsb-release'
   end
 
   create_file('dymotd.sh', '/etc/profile.d/dymotd.sh')
