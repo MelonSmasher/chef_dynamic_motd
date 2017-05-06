@@ -9,5 +9,6 @@ supports 'debian'
 supports 'ubuntu'
 supports 'centos'
 supports 'redhat'
+supports 'amazon'
 issues_url 'https://github.com/MelonSmasher/chef_dynamic_motd/issues' if respond_to?(:issues_url)
 source_url 'https://github.com/MelonSmasher/chef_dynamic_motd' if respond_to?(:source_url)

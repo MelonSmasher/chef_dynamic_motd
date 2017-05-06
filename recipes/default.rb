@@ -14,11 +14,11 @@ def create_file(source, file)
 end
 
 
-if node['platform_family'] == 'debian' or 'redhat'
+if node['platform_family'] == 'debian' or 'redhat' or 'amazon'
 
   package 'figlet'
 
-  if node['platform_family'] == 'rhel'
+  if node['platform_family'] == 'rhel' or 'amazon'
     package 'redhat-lsb-core'
   elsif node['platform_family'] == 'debian'
     package 'lsb-release'
