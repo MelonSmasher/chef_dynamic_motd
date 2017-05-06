@@ -4,7 +4,7 @@ maintainer_email 'markea125@gmail.com'
 license 'MIT'
 description 'Configures a dynamic MOTD on linux systems.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.1.3'
+version '0.1.4'
 supports 'debian'
 supports 'ubuntu'
 supports 'centos'

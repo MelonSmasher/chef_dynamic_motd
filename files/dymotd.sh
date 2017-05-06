@@ -57,12 +57,7 @@ if [[ $- == *i* ]]; then
     printf "\n"
     printf "Interface\tMAC Address\t\tIP Address\t\n"
 
-    for x in $INTERFACE
-    do
-            MAC=$(ip ad show dev $x |grep link/ether |awk '{print $2}')
-            IP=$(ip ad show dev $x |grep -v inet6 | grep inet|awk '{print $2}')
-            printf  $x"\t\t"$MAC"\t"$IP"\t\n"
+    for x in $INTERFACE; do MAC=$(ip ad show dev $x |grep link/ether |awk '{print $2}'); IP=$(ip ad show dev $x |grep -v inet6 | grep inet|awk '{print $2}'); printf  $x"\t\t"$MAC"\t"$IP"\t\n"; done
 
-    done
     echo
 fi
