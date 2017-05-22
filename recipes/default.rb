@@ -13,24 +13,27 @@ def create_file(source, file)
   end
 end
 
-
-if node['platform_family'] == 'debian' or 'redhat' or 'amazon'
-
+def finish_up
   package 'figlet'
-
-  if node['platform_family'] == 'rhel' or 'amazon'
-    package 'redhat-lsb-core'
-  elsif node['platform_family'] == 'debian'
-    package 'lsb-release'
-  end
-
   create_file('dymotd.sh', '/etc/profile.d/dymotd.sh')
-
   file '/etc/motd' do
     content " #{node['dynamic_motd']['message']}\n"
     mode '0655'
     owner 'root'
     group 'root'
   end
+end
 
+case node['platform_family']
+  when 'rhel', 'amazon'
+    package 'redhat-lsb-core'
+    finish_up
+  when 'debian'
+    package 'lsb-release'
+    finish_up
+  else
+    log 'Unsupported Platform Family' do
+      message "#{node['platform_family']} is not supported at this time."
+      level :warn
+    end
 end
